@@ -15,6 +15,15 @@ class CreateRoastersTable extends Migration
     {
         Schema::create('roasters', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->text('description');
+            $table->date('established_year');
+            $table->string('website_url');
+            $table->string('store_url');
+            $table->string('city');
+            $table->string('state')->nullable();
+            $table->string('country');
+            $table->string('logo');
             $table->timestamps();
         });
     }

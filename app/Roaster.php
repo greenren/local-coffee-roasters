@@ -19,7 +19,8 @@ class Roaster extends Model
         'city',
         'state',
         'country',
-        'logo'
+        'logo',
+        'slug'
     ];
 
     protected $dates = ["established_year"];
@@ -28,7 +29,6 @@ class Roaster extends Model
      * Set established_year as Carbon object
      *
      * @param $date
-     * @return return type Carbon
      */
     public function setEstablishedYearAttribute($date)
     {

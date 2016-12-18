@@ -3,12 +3,16 @@
     <h1>Local Coffee Roasters</h1>
 @stop
 @section('content')
-    <ul class="list-unstyled">
-        @foreach($roasters as $roaster)
-            <li>
-                <h2>{{ $roaster->name }}</h2>
-                <p>{{ $roaster->city }}, {{ $roaster->state }}, {{ $roaster->country }}</p>
-            </li>
-        @endforeach
-    </ul>
+    @if (count($roasters))
+        <ul class="list-unstyled">
+            @foreach($roasters as $roaster)
+                <li>
+                    <h2>{{ $roaster->name }}</h2>
+                    <p>{{ $roaster->city }}, {{ $roaster->state }}, {{ $roaster->country }}</p>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>Could not find any local coffee roasters.</p>
+    @endif
 @stop

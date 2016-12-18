@@ -11,10 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
+Route::get('/', 'RoasterController@index');
+
+// Route::get('/', function(){
 //     return redirect('roaster');
 // });
-
-Route::get('/', 'RoasterController@index');
 
 Route::resource('roaster', 'RoasterController');

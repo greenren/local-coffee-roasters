@@ -8,11 +8,14 @@
         <title>Local Coffee Roasters</title>
     </head>
     <body>
-        <div class="header">
-            @yield('header')
-        </div>
         <div class="container">
+
+            <div class="page-header">
+                @yield('header')
+            </div>
+
             @yield('content')
+
         </div>
     </body>
 </html>

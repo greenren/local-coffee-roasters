@@ -15,7 +15,7 @@ class AddSlugToRoastersTable extends Migration
     public function up()
     {
         Schema::table('roasters', function (Blueprint $table) {
-            $table->string('slug');
+            $table->string('slug')->unique();
         });
     }
 

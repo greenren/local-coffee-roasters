@@ -7,7 +7,9 @@
         <ul class="list-unstyled">
             @foreach($roasters as $roaster)
                 <li>
-                    <h2>{{ $roaster->name }}</h2>
+                    <h2>
+                        <a href="{{ url('roaster', $roaster->slug) }}">{{ $roaster->name }}</a>
+                    </h2>
                     <p>{{ $roaster->city }}, {{ $roaster->state }}, {{ $roaster->country }}</p>
                 </li>
             @endforeach

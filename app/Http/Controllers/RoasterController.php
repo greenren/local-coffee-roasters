@@ -15,6 +15,7 @@ class RoasterController extends Controller
     public function index()
     {
         $roasters = Roaster::all();
+        
         return view('roasters.index', compact('roasters'));
     }
 
@@ -47,7 +48,9 @@ class RoasterController extends Controller
      */
     public function show($id)
     {
-        //
+        $roaster = Roaster::where('slug', $id)->first();
+
+        return view('roasters.show', compact('roaster'));
     }
 
     /**

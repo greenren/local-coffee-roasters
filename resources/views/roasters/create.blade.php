@@ -29,8 +29,14 @@
 
         <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
             {!! Form::label('state', 'State (optional)') !!}
-            {!! Form::select('state', $options, $selected_value, ['class' => 'form-control']) !!}
+            {!! Form::select('state', Location::getStates(), null, ['class' => 'form-control']) !!}
             <small class="text-danger">{{ $errors->first('state') }}</small>
+        </div>
+
+        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+            {!! Form::label('country', 'Country') !!}
+            {!! Form::select('country', Location::getCountries(), 'United States', ['class' => 'form-control', 'required' => 'required']) !!}
+            <small class="text-danger">{{ $errors->first('country') }}</small>
         </div>
 
         <div class="form-group{{ $errors->has('established_year') ? ' has-error' : '' }}">

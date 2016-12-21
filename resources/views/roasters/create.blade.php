@@ -45,10 +45,28 @@
             <small class="text-danger">{{ $errors->first('established_year') }}</small>
         </div>
 
+        <div class="form-group{{ $errors->has('website_url') ? ' has-error' : '' }}">
+            {!! Form::label('website_url', 'Website URL') !!}
+            {!! Form::text('website_url', null, ['class' => 'form-control', 'required' => 'required']) !!}
+            <small class="text-danger">{{ $errors->first('website_url') }}</small>
+        </div>
+
+        <div class="form-group{{ $errors->has('store_url') ? ' has-error' : '' }}">
+            {!! Form::label('store_url', 'Store URL') !!}
+            {!! Form::text('store_url', null, ['class' => 'form-control', 'required' => 'required']) !!}
+            <small class="text-danger">{{ $errors->first('store_url') }}</small>
+        </div>
+
         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
             {!! Form::label('description', 'About') !!}
             {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'required']) !!}
             <small class="text-danger">{{ $errors->first('description') }}</small>
+        </div>
+
+        <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+            {!! Form::label('logo', 'Logo (optional)') !!}
+            {!! Form::file('logo') !!}
+            <small class="text-danger">{{ $errors->first('logo') }}</small>
         </div>
 
 

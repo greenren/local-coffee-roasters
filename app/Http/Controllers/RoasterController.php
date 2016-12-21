@@ -15,7 +15,7 @@ class RoasterController extends Controller
     public function index()
     {
         $roasters = Roaster::all();
-        
+
         return view('roasters.index', compact('roasters'));
     }
 
@@ -26,7 +26,7 @@ class RoasterController extends Controller
      */
     public function create()
     {
-        //
+        return view('roasters.create');
     }
 
     /**
@@ -38,6 +38,7 @@ class RoasterController extends Controller
     public function store(Request $request)
     {
         //
+        print "Well... that happened";
     }
 
     /**

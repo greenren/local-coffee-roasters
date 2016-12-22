@@ -38,7 +38,7 @@ class CreateRoasterRequest extends FormRequest
             'website_url' => 'required|url',
             'store_url' => 'required|url',
             'city' => 'required',
-            'state' => 'required|in:' . implode(',', array_keys(Location::getStates())),
+            'state' => 'in:' . implode(',', array_keys(Location::getStates())),
             'country' => 'required|in:' . implode(',', Location::getCountries()),
             'logo' => ''
         ];

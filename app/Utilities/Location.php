@@ -16,6 +16,7 @@ class Location
 	public static function getStates()
 	{
 		return $states = array (
+			null => '',
 			'AL'=>'Alabama',
 			'AK'=>'Alaska',
 			'AZ'=>'Arizona',

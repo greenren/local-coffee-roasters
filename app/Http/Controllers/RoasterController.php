@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Roaster;
+use App\Http\Requests\CreateRoasterRequest;
 
 class RoasterController extends Controller
 {
@@ -35,10 +36,23 @@ class RoasterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRoasterRequest $request)
     {
-        //
-        print "Well... that happened";
+
+        $roaster = new Roaster($request->all());
+        $roaster['slug'] = str_slug($roaster['name'] . '-' . $roaster['city'], '-');
+
+        if($request->hasFile('logo')){
+            $fileName = $roaster['slug'] . '-logo.' . $request->file('logo')->extension();
+            $request->file('logo')->move(
+                storage_path() . '/app/public/logos/', $fileName
+            );
+
+            $roaster['logo'] = $fileName;
+        }
+        
+        $roaster->save();
+        return redirect('roaster');
     }
 
     /**

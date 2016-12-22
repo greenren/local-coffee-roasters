@@ -3,7 +3,7 @@
     <h1>Add a new coffee roaster</h1>
 @stop
 @section('content')
-    {!! Form::open(['method' => 'POST', 'action' => 'RoasterController@store']) !!}
+    {!! Form::open(['method' => 'POST', 'action' => 'RoasterController@store', 'files' => true]) !!}
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -65,7 +65,7 @@
 
         <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
             {!! Form::label('logo', 'Logo (optional)') !!}
-            {!! Form::file('logo') !!}
+            {!! Form::file('logo', null) !!}
             <small class="text-danger">{{ $errors->first('logo') }}</small>
         </div>
 

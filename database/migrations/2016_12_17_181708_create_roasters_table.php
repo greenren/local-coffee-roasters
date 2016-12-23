@@ -23,7 +23,8 @@ class CreateRoastersTable extends Migration
             $table->string('city');
             $table->string('state')->nullable();
             $table->string('country');
-            $table->string('logo');
+            $table->string('logo')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

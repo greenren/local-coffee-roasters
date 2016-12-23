@@ -50,7 +50,7 @@ class RoasterController extends Controller
 
             $roaster['logo'] = $fileName;
         }
-        
+
         $roaster->save();
         return redirect('roaster');
     }

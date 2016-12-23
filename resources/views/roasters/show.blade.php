@@ -11,10 +11,12 @@
             <h1>{{ $roaster->name }}</h1>
             <p>Est. {{ $roaster->established_year->year }}</p>
         </div>
-        <div class="col-xs-4 col-md-3">
-        <img src="{{ asset('/storage/logos/'.$roaster->logo) }}" alt=" {{ $roaster->slug }}-logo"
+        @if($roaster->logo)
+            <div class="col-xs-4 col-md-3">
+                <img src="{{ asset('/storage/logos/'.$roaster->logo) }}" alt=" {{ $roaster->slug }}-logo"
             class="img-thumbnail img-rounded">
-        </div>
+            </div>
+        @endif
     </div>
 @stop
 @section('content')

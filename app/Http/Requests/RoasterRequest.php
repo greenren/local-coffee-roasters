@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Utilities\Location;
 
-class CreateRoasterRequest extends FormRequest
+class RoasterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

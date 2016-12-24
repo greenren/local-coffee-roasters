@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Collective\Html\Eloquent\FormAccessible;
 
 class Roaster extends Model
 {
+
     /**
      * Attributes that can be mass assigned
      */
@@ -18,9 +20,7 @@ class Roaster extends Model
         'store_url',
         'city',
         'state',
-        'country',
-        'logo',
-        'slug'
+        'country'
     ];
 
     protected $dates = ["established_year"];
@@ -34,4 +34,17 @@ class Roaster extends Model
     {
         $this->attributes['established_year'] = Carbon::createFromDate($date, 1, 1);
     }
+
+    use FormAccessible;
+    /**
+     * Form model accessor for edit form
+     *
+     * @param Date value
+     * @return Return date with format Y
+     */
+    public function formEstablishedYearAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y');
+    }
+
 }

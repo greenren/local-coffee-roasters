@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Roaster;
-use App\Http\Requests\CreateRoasterRequest;
+use App\Http\Requests\RoasterRequest;
+use Storage;
 
 class RoasterController extends Controller
 {
@@ -36,7 +37,7 @@ class RoasterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRoasterRequest $request)
+    public function store(RoasterRequest $request)
     {
 
         $roaster = new Roaster($request->all());
@@ -63,7 +64,7 @@ class RoasterController extends Controller
      */
     public function show($id)
     {
-        $roaster = Roaster::where('slug', $id)->first();
+        $roaster = Roaster::where('slug', $id)->firstOrFail();
 
         return view('roasters.show', compact('roaster'));
     }
@@ -76,7 +77,9 @@ class RoasterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roaster = Roaster::where('slug', $id)->firstOrFail();
+
+        return view('roasters.edit', compact('roaster'));
     }
 
     /**
@@ -86,9 +89,24 @@ class RoasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoasterRequest $request, $id)
     {
-        //
+        $roaster = Roaster::findOrFail($id);
+        $roaster->update($request->all());
+        $roaster['slug'] = str_slug($roaster['name'] . '-' . $roaster['city'], '-');
+
+        if($request->hasFile('logo')){
+            Storage::delete('/public/logos/' . $roaster->logo);
+            $fileName = $roaster['slug'] . '-logo.' . $request->file('logo')->extension();
+            $request->file('logo')->move(
+                storage_path() . '/app/public/logos/', $fileName
+            );
+
+            $roaster['logo'] = $fileName;
+        }
+
+        $roaster->save();
+        return redirect('roaster');
     }
 
     /**

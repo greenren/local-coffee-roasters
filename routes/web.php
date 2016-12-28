@@ -18,3 +18,7 @@ Route::get('/', 'RoasterController@index');
 // });
 
 Route::resource('roaster', 'RoasterController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

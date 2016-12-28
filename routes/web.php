@@ -19,6 +19,14 @@ Route::get('/', 'RoasterController@index');
 
 Route::resource('roaster', 'RoasterController');
 
+Route::resource('review', 'ReviewController');
+
+/**
+ * Authentication routes
+ */
 Auth::routes();
 
+/**
+ * Route to home
+ */
 Route::get('/home', 'HomeController@index');

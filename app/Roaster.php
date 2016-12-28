@@ -47,4 +47,14 @@ class Roaster extends Model
         return Carbon::parse($value)->format('Y');
     }
 
+    /**
+     * A roaster can have many reviews
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
 }

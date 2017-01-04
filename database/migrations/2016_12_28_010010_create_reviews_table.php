@@ -18,8 +18,8 @@ class CreateReviewsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('roaster_id')->unsigned();
             $table->string('title');
-            $table->text('review')->unsigned();
-            $table->integer('stars')->unsigned()->defaul(0);
+            $table->text('body')->unsigned();
+            $table->integer('stars')->unsigned()->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')

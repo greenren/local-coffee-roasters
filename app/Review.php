@@ -8,8 +8,8 @@ class Review extends Model
 {
     protected $fillable = [
         'title',
+        'body',
         'stars',
-        'review',
     ];
 
     /**

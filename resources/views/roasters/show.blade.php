@@ -48,4 +48,7 @@
             <a href="{{ $roaster->store_url }}">Store</a>
         </div>
     </div>
+    <hr/>
+    <h2>Reviews</h2>
+    @include('reviews.partials.reviews', ['noReviewsMessage' => 'No reviews for this roaster'])
 @stop

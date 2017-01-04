@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Review;
 
 class ReviewController extends Controller
 {
@@ -13,7 +14,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::latest('created_at')->get();
+        return view('reviews.index', compact('reviews'));
     }
 
     /**

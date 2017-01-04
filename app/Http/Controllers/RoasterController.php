@@ -65,8 +65,9 @@ class RoasterController extends Controller
     public function show($id)
     {
         $roaster = Roaster::where('slug', $id)->firstOrFail();
+        $reviews = $roaster->reviews;
 
-        return view('roasters.show', compact('roaster'));
+        return view('roasters.show', compact('roaster', 'reviews'));
     }
 
     /**
